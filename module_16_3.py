@@ -33,5 +33,7 @@ async def update_users(username: Annotated[str, Path(min_length=5, max_length=20
 
 @app.delete("/user/{user_id}")
 async def delete_users(user_id: str = Path(ge=1, le=100, description="Enter User ID", example="25"),) -> str:
-    users.pop(user_id)
-    return f"User with {user_id} was deleted"
+    for user_id in enumerate(users):
+        if user_id == user_id:
+            users.pop(user_id)
+            return f"User {user_id} has been deleted."
